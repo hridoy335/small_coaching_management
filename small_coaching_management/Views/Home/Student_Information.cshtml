@@ -1,0 +1,68 @@
+﻿@model IEnumerable<small_coaching_management.Models.Student>
+
+@{
+    ViewBag.Title = "Student_Information";
+    Layout = "~/Views/Shared/_My_LayoutPage.cshtml";
+}
+
+<h6>Student_Information</h6>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentContact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.studentClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PamentAmount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentContact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.studentClass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PamentAmount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

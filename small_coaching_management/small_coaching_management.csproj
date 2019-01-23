@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -130,19 +138,202 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Course.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Schedule.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentBill.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentClass.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Teacher.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Transcetion.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootflat-admin\css\bootstrap.min.css" />
+    <Content Include="Content\bootflat-admin\css\site.css" />
+    <Content Include="Content\bootflat-admin\js\application.js" />
+    <Content Include="Content\bootflat-admin\js\bootstrap.min.js" />
+    <Content Include="Content\bootflat-admin\js\html5shiv.js" />
+    <Content Include="Content\bootflat-admin\js\icheck.min.js" />
+    <Content Include="Content\bootflat-admin\js\jquery-1.10.1.min.js" />
+    <Content Include="Content\bootflat-admin\js\jquery.fs.selecter.min.js" />
+    <Content Include="Content\bootflat-admin\js\jquery.fs.stepper.min.js" />
+    <Content Include="Content\bootflat-admin\js\respond.min.js" />
+    <Content Include="Content\bootflat-admin\tmp\bootflat-admin.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dist\css\site.min.css" />
+    <Content Include="Content\dist\fonts\angularicons.svg" />
+    <Content Include="Content\dist\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\dist\img\ascii-logo.gif" />
+    <Content Include="Content\dist\img\bootflat-ui-kit.jpg" />
+    <Content Include="Content\dist\img\check_flat\default.png" />
+    <Content Include="Content\dist\img\design.png" />
+    <Content Include="Content\dist\img\divider.png" />
+    <Content Include="Content\dist\img\fast.png" />
+    <Content Include="Content\dist\img\feature-bootstrap.png" />
+    <Content Include="Content\dist\img\feature-css.png" />
+    <Content Include="Content\dist\img\feature-lightweight.png" />
+    <Content Include="Content\dist\img\feature-mobile.png" />
+    <Content Include="Content\dist\img\footer-logo.png" />
+    <Content Include="Content\dist\img\github.png" />
+    <Content Include="Content\dist\img\index.png" />
+    <Content Include="Content\dist\img\Jumbotron.jpg" />
+    <Content Include="Content\dist\img\logo-index.png" />
+    <Content Include="Content\dist\img\logo.png" />
+    <Content Include="Content\dist\img\photo-1.jpg" />
+    <Content Include="Content\dist\img\photo-2.jpg" />
+    <Content Include="Content\dist\img\photo-3.jpg" />
+    <Content Include="Content\dist\img\photo-4.jpg" />
+    <Content Include="Content\dist\img\prototyping.png" />
+    <Content Include="Content\dist\img\screensho1.png" />
+    <Content Include="Content\dist\img\screenshot2.png" />
+    <Content Include="Content\dist\img\share.gif" />
+    <Content Include="Content\dist\img\slider1.jpg" />
+    <Content Include="Content\dist\img\slider2.jpg" />
+    <Content Include="Content\dist\img\slider3.jpg" />
+    <Content Include="Content\dist\img\thumbnail-1.jpg" />
+    <Content Include="Content\dist\img\thumbnail-2.jpg" />
+    <Content Include="Content\dist\img\thumbnail-3.jpg" />
+    <Content Include="Content\dist\img\thumbnail-4.jpg" />
+    <Content Include="Content\dist\img\together.png" />
+    <Content Include="Content\dist\img\wild_flowers.png" />
+    <Content Include="Content\dist\js\site.min.js" />
+    <Content Include="Content\site.min.css" />
+    <Content Include="Content\site.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\bootflat-admin\csscomb.json" />
+    <Content Include="Content\bootflat-admin\jscomb.json" />
+    <Content Include="Content\bootflat-admin\sass\.csscomb.json" />
+    <Content Include="Content\bootflat-admin\sass\.csslintrc" />
+    <Content Include="Content\bootflat-admin\sass\bootflat-admin.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_accordion.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_alert.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_breadcrumb.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_button.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_button_group.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_calendar.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_checkbox_radio.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_dropdown.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_footer.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_form.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_global.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_jumbotron.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_label_badge.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_list.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_media_list.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_modal.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_navbar.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_pager.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_pagination.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_panel.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_pill.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_popover.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_pricing.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_progress.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_selecter.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_stepper.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_tab.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_thumbnail.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_timeline.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_toggle.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_tooltip.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_typography.scss" />
+    <Content Include="Content\bootflat-admin\sass\bootflat\_well.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\font-awesome.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_bordered-pulled.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_core.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_fixed-width.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_icons.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_larger.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_list.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_mixins.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_path.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_rotated-flipped.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_spinning.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_stacked.scss" />
+    <Content Include="Content\bootflat-admin\sass\font-awesome\_variables.scss" />
+    <Content Include="Content\bootflat-admin\tmp\bootflat-admin.css.map" />
+    <Content Include="Content\dist\fonts\angularicons.eot" />
+    <Content Include="Content\dist\fonts\angularicons.ttf" />
+    <Content Include="Content\dist\fonts\angularicons.woff" />
+    <Content Include="Content\dist\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\dist\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\dist\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\dist\fonts\FontAwesome.otf" />
+    <Content Include="Content\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\dist\img\check_flat\default.psd" />
+    <Content Include="Content\dist\js\site.min.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -165,13 +356,16 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Shared\_My_LayoutPage.cshtml" />
+    <Content Include="Views\Home\Teacher_registration.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Student_Information.cshtml" />
+    <Content Include="Views\Home\Teacher_information.cshtml" />
+    <Content Include="Views\Home\Schedule.cshtml" />
+    <Content Include="Views\Home\Student_Registration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -185,6 +379,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

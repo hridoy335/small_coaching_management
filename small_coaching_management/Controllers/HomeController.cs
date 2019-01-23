@@ -8,23 +8,82 @@ namespace small_coaching_management.Controllers
 {
     public class HomeController : Controller
     {
+        Models.small_coaching_managementEntities db = new Models.small_coaching_managementEntities();
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Student_Registration()  
         {
             ViewBag.Message = "Your application description page.";
+          
 
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Student_Registration(Models.Student student)
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your application description page.";
+            if(ModelState.IsValid)
+            {
+                db.Students.Add(student);
+                    try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Student_Registration");
+                }
+                catch(Exception ex)
+                {
+                    ViewBag.Error = ex.Message;
+                }
+            }
 
             return View();
         }
+        public ActionResult Student_Information() 
+        {
+            ViewBag.Message = "Student Registration Page ";
+           
+
+            return View(db.Students.ToList());
+        }
+
+        public ActionResult Teacher_registration(Models.Teacher teacher) 
+        {
+            ViewBag.Message = "Your Course page.";
+            if(ModelState.IsValid)
+            {
+                db.Teachers.Add(teacher);
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Teacher_registration");
+                }
+                catch(Exception ex)
+                {
+                    ViewBag.Error = ex.Message;
+                }
+            }
+            return View();
+        }
+
+        public ActionResult Teacher_information() 
+        {
+            ViewBag.Message = "Your Course page.";
+
+            return View(db.Teachers.ToList());
+        }
+
+        public ActionResult Schedule()
+        {
+            ViewBag.Message = "Your Schedule page.";
+           
+            
+            return View(db.Schedules.ToList());
+        }
+        
+
     }
 }

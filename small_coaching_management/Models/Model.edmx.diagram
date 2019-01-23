@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b4bf0fdb1aed4753a73074f2d8635f7d" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="small_coaching_managementModel.Class" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="small_coaching_managementModel.Course" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="small_coaching_managementModel.Schedule" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="small_coaching_managementModel.Student" Width="1.5" PointX="3.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="small_coaching_managementModel.StudentBill" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="small_coaching_managementModel.StudentClass" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="small_coaching_managementModel.sysdiagram" Width="1.5" PointX="8.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="small_coaching_managementModel.Teacher" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="small_coaching_managementModel.Transcetion" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="small_coaching_managementModel.FK__Schedule__ClassI__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="small_coaching_managementModel.FK__StudentCl__Class__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="small_coaching_managementModel.FK__Schedule__Course__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="small_coaching_managementModel.FK__Schedule__Teache__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="small_coaching_managementModel.FK__StudentBi__Stude__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="small_coaching_managementModel.FK__StudentCl__Stude__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="small_coaching_managementModel.FK__Transceti__Stude__25869641" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="small_coaching_managementModel.Product" Width="1.5" PointX="8.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
