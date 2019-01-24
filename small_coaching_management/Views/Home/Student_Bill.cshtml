@@ -1,0 +1,52 @@
+﻿@model IEnumerable<small_coaching_management.Models.StudentBill>
+
+@{
+    ViewBag.Title = "Student_Bill";
+    Layout = "~/Views/Shared/_My_LayoutPage.cshtml";
+}
+
+<h6>Student_Bill</h6>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentBilId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillMonth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentBilId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillMonth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

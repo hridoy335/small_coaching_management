@@ -14,18 +14,6 @@
     <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CourseName" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'small_coaching_management.dbo.Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="Id" />
-      <PropertyRef Name="Product_name" />
-      <PropertyRef Name="Discription" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Product_name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Discription" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
   <EntityType Name="Schedule">
     <Key>
       <PropertyRef Name="ScheduleId" />
@@ -68,16 +56,6 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
     <Property Name="StudentId" Type="int" Nullable="false" />
     <Property Name="ClassId" Type="int" Nullable="false" />
     <Property Name="Amount" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Teacher">
     <Key>
@@ -220,16 +198,8 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentBill" EntityType="Self.StudentBill" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentClass" EntityType="Self.StudentClass" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Transcetion" EntityType="Self.Transcetion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Product" EntityType="Self.Product" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Product].[Id] AS [Id], 
-    [Product].[Product_name] AS [Product_name], 
-    [Product].[Discription] AS [Discription]
-    FROM [dbo].[Product] AS [Product]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK__Schedule__ClassI__1920BF5C" Association="Self.FK__Schedule__ClassI__1920BF5C">
       <End Role="Class" EntitySet="Class" />
       <End Role="Schedule" EntitySet="Schedule" />

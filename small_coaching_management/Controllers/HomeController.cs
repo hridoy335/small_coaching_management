@@ -8,7 +8,7 @@ namespace small_coaching_management.Controllers
 {
     public class HomeController : Controller
     {
-        Models.small_coaching_managementEntities db = new Models.small_coaching_managementEntities();
+        Models.small_coaching_managementEntities1 db = new Models.small_coaching_managementEntities1(); 
         public ActionResult Index()
         {
             return View();
@@ -81,7 +81,13 @@ namespace small_coaching_management.Controllers
             ViewBag.Message = "Your Schedule page.";
            
             
-            return View(db.Schedules.ToList());
+            return View();
+        }
+
+        public ActionResult Student_Bill(Models.StudentBill studentBill)
+        {
+            ViewBag.Message = "Your application description page.";
+            return View(db.StudentBills.ToList());
         }
         
 

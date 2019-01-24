@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="small_coaching_managementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="small_coaching_managementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Class">
           <Key>
             <PropertyRef Name="ClassId" />
@@ -18,18 +18,6 @@
           </Key>
           <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CourseName" Type="varchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'small_coaching_management.dbo.Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Product_name" />
-            <PropertyRef Name="Discription" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Product_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Discription" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Schedule">
           <Key>
@@ -73,16 +61,6 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
           <Property Name="StudentId" Type="int" Nullable="false" />
           <Property Name="ClassId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -225,16 +203,8 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentBill" EntityType="Self.StudentBill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentClass" EntityType="Self.StudentClass" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transcetion" EntityType="Self.Transcetion" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Product" EntityType="Self.Product" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Product].[Id] AS [Id], 
-    [Product].[Product_name] AS [Product_name], 
-    [Product].[Discription] AS [Discription]
-    FROM [dbo].[Product] AS [Product]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__Schedule__ClassI__1920BF5C" Association="Self.FK__Schedule__ClassI__1920BF5C">
             <End Role="Class" EntitySet="Class" />
             <End Role="Schedule" EntitySet="Schedule" />
@@ -264,7 +234,8 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
             <End Role="Transcetion" EntitySet="Transcetion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="small_coaching_managementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -336,16 +307,6 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Class" Relationship="Self.FK__StudentCl__Class__1FCDBCEB" FromRole="StudentClass" ToRole="Class" />
           <NavigationProperty Name="Student" Relationship="Self.FK__StudentCl__Stude__1ED998B2" FromRole="StudentClass" ToRole="Student" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -452,14 +413,13 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="small_coaching_managementEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="small_coaching_managementEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Classes" EntityType="Self.Class" />
           <EntitySet Name="Courses" EntityType="Self.Course" />
           <EntitySet Name="Schedules" EntityType="Self.Schedule" />
           <EntitySet Name="Students" EntityType="Self.Student" />
           <EntitySet Name="StudentBills" EntityType="Self.StudentBill" />
           <EntitySet Name="StudentClasses" EntityType="Self.StudentClass" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Teachers" EntityType="Self.Teacher" />
           <EntitySet Name="Transcetions" EntityType="Self.Transcetion" />
           <AssociationSet Name="FK__Schedule__ClassI__1920BF5C" Association="Self.FK__Schedule__ClassI__1920BF5C">
@@ -506,11 +466,11 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(small_coaching_managementModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(small_coaching_managementModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -520,35 +480,13 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="Products" EntityType="small_coaching_managementModel.Product" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Product_name" />
-            <PropertyRef Name="Discription" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Product_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Discription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="small_coaching_managementModelStoreContainer" CdmEntityContainer="small_coaching_managementEntities">
+        <EntityContainerMapping StorageEntityContainer="small_coaching_managementModelStoreContainer" CdmEntityContainer="small_coaching_managementEntities1">
           <EntitySetMapping Name="Classes">
             <EntityTypeMapping TypeName="small_coaching_managementModel.Class">
               <MappingFragment StoreEntitySet="Class">
@@ -612,17 +550,6 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="small_coaching_managementModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Teachers">
             <EntityTypeMapping TypeName="small_coaching_managementModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
@@ -647,36 +574,10 @@ warning 6002: The table/view 'small_coaching_management.dbo.Product' does not ha
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="small_coaching_managementModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="small_coaching_managementModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="small_coaching_managementModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="small_coaching_managementModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="small_coaching_managementModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="small_coaching_managementModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="small_coaching_managementModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="small_coaching_managementModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="small_coaching_managementModel.Store.sp_helpdiagrams" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="small_coaching_managementModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="small_coaching_managementModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="small_coaching_managementModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="Discription" ColumnName="Discription" />
-                <ScalarProperty Name="Product_name" ColumnName="Product_name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

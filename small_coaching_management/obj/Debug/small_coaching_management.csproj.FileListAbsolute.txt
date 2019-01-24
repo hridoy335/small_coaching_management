@@ -81,3 +81,4 @@ G:\Education\All semester\Intern\small_coaching_management\small_coaching_manage
 G:\Education\All semester\Intern\small_coaching_management\small_coaching_management\small_coaching_management\obj\Debug\small_coaching_management.csproj.CopyComplete
 G:\Education\All semester\Intern\small_coaching_management\small_coaching_management\small_coaching_management\obj\Debug\small_coaching_management.dll
 G:\Education\All semester\Intern\small_coaching_management\small_coaching_management\small_coaching_management\obj\Debug\small_coaching_management.pdb
+G:\Education\All semester\Intern\small_coaching_management\small_coaching_management\small_coaching_management\obj\Debug\small_coaching_management.csprojAssemblyReference.cache

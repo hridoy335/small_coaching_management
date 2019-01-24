@@ -69,16 +69,6 @@
     <NavigationProperty Name="Class" Relationship="Self.FK__StudentCl__Class__1FCDBCEB" FromRole="StudentClass" ToRole="Class" />
     <NavigationProperty Name="Student" Relationship="Self.FK__StudentCl__Stude__1ED998B2" FromRole="StudentClass" ToRole="Student" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <EntityType Name="Teacher">
     <Key>
       <PropertyRef Name="TeacherId" />
@@ -184,14 +174,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="small_coaching_managementEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="small_coaching_managementEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Classes" EntityType="Self.Class" />
     <EntitySet Name="Courses" EntityType="Self.Course" />
     <EntitySet Name="Schedules" EntityType="Self.Schedule" />
     <EntitySet Name="Students" EntityType="Self.Student" />
     <EntitySet Name="StudentBills" EntityType="Self.StudentBill" />
     <EntitySet Name="StudentClasses" EntityType="Self.StudentClass" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Teachers" EntityType="Self.Teacher" />
     <EntitySet Name="Transcetions" EntityType="Self.Transcetion" />
     <AssociationSet Name="FK__Schedule__ClassI__1920BF5C" Association="Self.FK__Schedule__ClassI__1920BF5C">
@@ -238,11 +227,11 @@
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(small_coaching_managementModel.sp_helpdiagramdefinition_Result)">
+    <FunctionImport Name="sp_helpdiagramdefinition">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(small_coaching_managementModel.sp_helpdiagrams_Result)">
+    <FunctionImport Name="sp_helpdiagrams">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -252,27 +241,5 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <EntitySet Name="Products" EntityType="small_coaching_managementModel.Product" />
   </EntityContainer>
-  <ComplexType Name="sp_helpdiagramdefinition_Result">
-    <Property Type="Int32" Name="version" Nullable="true" />
-    <Property Type="Binary" Name="definition" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagrams_Result">
-    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="OwnerID" Nullable="false" />
-  </ComplexType>
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="Id" />
-      <PropertyRef Name="Product_name" />
-      <PropertyRef Name="Discription" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Product_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Discription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
 </Schema>
