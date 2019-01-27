@@ -23,7 +23,6 @@ namespace small_coaching_management.Models
     
         public int StudentId { get; set; }
         public string StudentName { get; set; }
-        public int ID { get; set; }
         public string StudentContact { get; set; }
         public string StudentAddress { get; set; }
         public string studentClass { get; set; }

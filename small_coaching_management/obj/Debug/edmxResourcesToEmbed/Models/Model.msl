@@ -34,7 +34,6 @@
         <MappingFragment StoreEntitySet="Student">
           <ScalarProperty Name="StudentId" ColumnName="StudentId" />
           <ScalarProperty Name="StudentName" ColumnName="StudentName" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="StudentContact" ColumnName="StudentContact" />
           <ScalarProperty Name="StudentAddress" ColumnName="StudentAddress" />
           <ScalarProperty Name="studentClass" ColumnName="studentClass" />

@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using small_coaching_management.Models;
+using System;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
 
 namespace small_coaching_management.Controllers
@@ -75,7 +76,7 @@ namespace small_coaching_management.Controllers
 
             return View(db.Teachers.ToList());
         }
-
+       
         public ActionResult Schedule()
         {
             ViewBag.Message = "Your Schedule page.";
@@ -84,12 +85,105 @@ namespace small_coaching_management.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Schedule(Models.Schedule schedule)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Schedules.Add(schedule);
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Schedule");
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Error = ex.Message;
+                }
+            }
+            return View();
+        }
+
         public ActionResult Student_Bill(Models.StudentBill studentBill)
         {
             ViewBag.Message = "Your application description page.";
             return View(db.StudentBills.ToList());
         }
-        
+        //[HttpGet]
+        //public ActionResult Student_Edit(int id) 
+        //{
+        //    var stu = db.Students.Where(s => s.StudentId == id).FirstOrDefault();
+        //    return View(stu); 
+        //}
 
+        //[HttpPost]
+        //public ActionResult Student_Edit(Student stu)
+        //{
+
+        //    return View();
+        //}
+
+        [HttpGet]
+        public ActionResult Student_Edit(int? id) 
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var Student_Edit = db.Students.Find(id);
+            if (Student_Edit == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Student_Edit);  
+        }
+
+
+        [HttpPost]
+        public ActionResult Student_Edit([Bind(Include =
+        "StudentId, StudentName,StudentContact,StudentAddress,studentClass,UserName,UserPassword,PamentAmount")] Student Student_Edit) 
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(Student_Edit).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Student_information");
+            }
+            return View(Student_Edit);
+        }
+
+        [HttpGet]
+        public ActionResult Teacher_Edit(int? id)
+        {
+            if(id==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var Teacher_Edit = db.Teachers.Find(id);
+            if(Teacher_Edit==null)
+            {
+                return HttpNotFound();
+            } 
+
+            return View(Teacher_Edit);
+        }
+
+        [HttpPost]
+        public ActionResult Teacher_Edit([Bind(Include =
+        "TeacherId, TeacherName,Contact,Address,UserName,UserPassword")] Teacher Teacher_Edit)
+        {
+            if(ModelState.IsValid)
+            {
+                db.Entry(Teacher_Edit).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Teacher_information");
+            }
+            return View(Teacher_Edit);
+        }
+
+        public ActionResult Schedule_Information()
+        {
+            return View(db.Schedules.ToList());
+        }
     }
 }

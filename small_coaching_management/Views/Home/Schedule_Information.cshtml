@@ -1,0 +1,58 @@
+﻿@model IEnumerable<small_coaching_management.Models.Schedule>
+
+@{
+    ViewBag.Title = "Schedule_Information";
+    Layout = "~/Views/Shared/_My_LayoutPage.cshtml";
+}
+
+<h2>Schedule_Information</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class_Day)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherId) 
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class_Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeacherId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ScheduleId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ScheduleId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ScheduleId })
+        </td>
+    </tr>
+}
+
+</table>

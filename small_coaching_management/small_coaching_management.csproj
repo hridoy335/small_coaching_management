@@ -177,7 +177,9 @@
     <Compile Include="Models\Transcetion.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Validation\Schedule.cs" />
     <Compile Include="Models\Validation\Student.cs" />
+    <Compile Include="Models\Validation\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -350,9 +352,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Student_Information.cshtml" />
     <Content Include="Views\Home\Teacher_information.cshtml" />
-    <Content Include="Views\Home\Student_Registration.cshtml" />
     <Content Include="Views\Home\Student_Bill.cshtml" />
     <Content Include="Views\Home\Schedule.cshtml" />
+    <Content Include="Views\Home\Student_Edit.cshtml" />
+    <Content Include="Views\Home\Student_Registration.cshtml" />
+    <Content Include="Views\Home\Teacher_Edit.cshtml" />
+    <Content Include="Views\Home\Schedule_Information.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

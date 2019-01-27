@@ -17,7 +17,7 @@ namespace small_coaching_management.Models
     
     public partial class small_coaching_managementEntities1 : DbContext
     {
-        public small_coaching_managementEntities1() 
+        public small_coaching_managementEntities1()
             : base("name=small_coaching_managementEntities1")
         {
         }

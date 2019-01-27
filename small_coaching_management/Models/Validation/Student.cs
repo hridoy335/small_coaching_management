@@ -6,17 +6,17 @@ using System.Web;
 
 namespace small_coaching_management.Models
 {
-    [MetadataType(typeof(MetadataStudent))] 
+    [MetadataType(typeof(MetadataStudent))]
     public partial class Student
     {
-    
+
     }
     public class MetadataStudent
     {
         [Required]
-        [Display(Name ="Student Name")]
+        [Display(Name = "Student Name")]
         public string StudentName { get; set; }
-        public int ID { get; set; }
+
         [Required]
         [Display(Name = "Student Contact")]
         public string StudentContact { get; set; }
@@ -26,8 +26,11 @@ namespace small_coaching_management.Models
         [Required]
         [Display(Name = "Class")]
         public string studentClass { get; set; }
+        [Required]
         public string UserName { get; set; }
+        [Required]
         public string UserPassword { get; set; }
+        [Required]
         public string PamentAmount { get; set; }
 
     }

@@ -31,7 +31,6 @@
     </Key>
     <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudentName" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="StudentContact" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="StudentAddress" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="studentClass" Type="varchar" MaxLength="100" Nullable="false" />

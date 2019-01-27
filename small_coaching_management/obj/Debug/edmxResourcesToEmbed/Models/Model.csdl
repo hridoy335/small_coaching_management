@@ -37,7 +37,6 @@
     </Key>
     <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StudentName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="StudentContact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="StudentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="studentClass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
