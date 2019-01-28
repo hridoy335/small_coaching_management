@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
+
 namespace small_coaching_management.Controllers
 {
     public class HomeController : Controller
@@ -77,14 +78,21 @@ namespace small_coaching_management.Controllers
             return View(db.Teachers.ToList());
         }
        
-        public ActionResult Schedule()
+        public ActionResult Schedule(int id=0)
         {
             ViewBag.Message = "Your Schedule page.";
-           
-            
-            return View();
+
+            Schedule schedule = new Schedule();
+            schedule.TeacherCollection = db.Teachers.ToList<Teacher>();
+            schedule.ClassCollection = db.Classes.ToList<Class>();
+
+            ViewBag.Courses = new SelectList(db.Courses, "CourseId", "CourseName");
+            //ViewBag.Accounts= new SelectList(db.Accounts, "AccountId", "AccountName");
+
+            return View(schedule);
         }
 
+        //Schedule 
         [HttpPost]
         public ActionResult Schedule(Models.Schedule schedule)
         {
@@ -184,6 +192,28 @@ namespace small_coaching_management.Controllers
         public ActionResult Schedule_Information()
         {
             return View(db.Schedules.ToList());
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string username, string password)  
+        {
+            var Login = db.Students.Where(x => x.UserName == username && x.UserPassword == password); 
+            if(Login==null)
+            {
+                return View("Login");
+            }
+            else
+            {
+        
+                return RedirectToAction("Index","Home");
+            }
+
+       
         }
     }
 }

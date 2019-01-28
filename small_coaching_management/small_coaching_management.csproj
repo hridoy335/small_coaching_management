@@ -355,9 +355,10 @@
     <Content Include="Views\Home\Student_Bill.cshtml" />
     <Content Include="Views\Home\Schedule.cshtml" />
     <Content Include="Views\Home\Student_Edit.cshtml" />
-    <Content Include="Views\Home\Student_Registration.cshtml" />
     <Content Include="Views\Home\Teacher_Edit.cshtml" />
     <Content Include="Views\Home\Schedule_Information.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Student_Registration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

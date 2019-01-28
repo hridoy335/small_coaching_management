@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -28,5 +29,7 @@ namespace small_coaching_management.Models.Validation
         public virtual Class Class { get; set; }
         public virtual Course Course { get; set; }
         public virtual Teacher Teacher { get; set; }
+
+
     }
 }
