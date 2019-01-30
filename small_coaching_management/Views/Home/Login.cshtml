@@ -35,6 +35,7 @@
 <body>
     
         <div class="container">
+            @ViewBag.message
             <form class="form-signin" action=@Url.Action("Login","Home") method="post">
                 <h3 class="form-signin-heading">Please sign in</h3>
                 <div class="form-group">

@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<small_coaching_management.Models.Schedule>
 
 @{
-    ViewBag.Title = "Schedule_Information";
-    Layout = "~/Views/Shared/_My_LayoutPage.cshtml";
+    ViewBag.Title = "Student_Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Schedule_Information</h2>
+<h2>Student_Schedule</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -19,7 +19,7 @@
             @Html.DisplayNameFor(model => model.Class_Day)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TeacherId) 
+            @Html.DisplayNameFor(model => model.TeacherId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ClassId)
@@ -39,13 +39,13 @@
             @Html.DisplayFor(modelItem => item.Class_Day)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
+            @Html.DisplayFor(modelItem => item.TeacherId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Class.ClassName)
+            @Html.DisplayFor(modelItem => item.ClassId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Course.CourseName)
+            @Html.DisplayFor(modelItem => item.CourseId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ScheduleId }) |

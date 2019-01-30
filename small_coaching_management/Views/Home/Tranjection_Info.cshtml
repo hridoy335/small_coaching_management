@@ -1,0 +1,35 @@
+﻿@model IEnumerable<small_coaching_management.Models.Transcetion>
+
+@{
+    ViewBag.Title = "Tranjection_Info";
+    Layout = "~/Views/Shared/_My_LayoutPage.cshtml";
+}
+
+<h6>Tranjection_Info</h6>
+
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.TransectionnDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentBillId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+  
+        <td>
+            @Html.DisplayFor(modelItem => item.TransectionnDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentBill.Student.StudentName)
+        </td>
+       
+    </tr>
+}
+
+</table>

@@ -7,14 +7,8 @@
 
 <h6>Student_Bill</h6>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentBilId)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.BillMonth)
         </th>
@@ -29,9 +23,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentBilId)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.BillMonth)
         </td>
@@ -39,12 +31,10 @@
             @Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StudentId)
+            @Html.DisplayFor(modelItem => item.Student.StudentName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            <strong> @Html.ActionLink("Edit", "Trangection", new { id = item.StudentBilId }) |</strong>
         </td>
     </tr>
 }

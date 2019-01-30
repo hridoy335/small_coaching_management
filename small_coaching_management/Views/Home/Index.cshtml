@@ -6,3 +6,8 @@
 
 <h6>Index</h6>
 
+@if(Session["username"] != null)
+{
+<h4><text>Welcome @Session["username"].ToString() </text></h4>
+}
+

@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-
+using System.Web.Security;
 
 namespace small_coaching_management.Controllers
 {
@@ -13,7 +13,14 @@ namespace small_coaching_management.Controllers
         Models.small_coaching_managementEntities1 db = new Models.small_coaching_managementEntities1(); 
         public ActionResult Index()
         {
-            return View();
+            if (Session["username"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         public ActionResult Student_Registration()  
@@ -51,7 +58,12 @@ namespace small_coaching_management.Controllers
 
             return View(db.Students.ToList());
         }
+        public ActionResult Teacher_registration()
+        {
+            return View();
+        }
 
+        [HttpPost]
         public ActionResult Teacher_registration(Models.Teacher teacher) 
         {
             ViewBag.Message = "Your Course page.";
@@ -87,7 +99,6 @@ namespace small_coaching_management.Controllers
             schedule.ClassCollection = db.Classes.ToList<Class>();
 
             ViewBag.Courses = new SelectList(db.Courses, "CourseId", "CourseName");
-            //ViewBag.Accounts= new SelectList(db.Accounts, "AccountId", "AccountName");
 
             return View(schedule);
         }
@@ -117,20 +128,7 @@ namespace small_coaching_management.Controllers
             ViewBag.Message = "Your application description page.";
             return View(db.StudentBills.ToList());
         }
-        //[HttpGet]
-        //public ActionResult Student_Edit(int id) 
-        //{
-        //    var stu = db.Students.Where(s => s.StudentId == id).FirstOrDefault();
-        //    return View(stu); 
-        //}
-
-        //[HttpPost]
-        //public ActionResult Student_Edit(Student stu)
-        //{
-
-        //    return View();
-        //}
-
+      
         [HttpGet]
         public ActionResult Student_Edit(int? id) 
         {
@@ -202,18 +200,106 @@ namespace small_coaching_management.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)  
         {
-            var Login = db.Students.Where(x => x.UserName == username && x.UserPassword == password); 
+            var Login = db.Students.Where(x => x.UserName == username && x.UserPassword == password).FirstOrDefault(); 
+           
             if(Login==null)
             {
-                return View("Login");
+                
+               
+                var tea = db.Teachers.Where(x => x.UserName == username && x.UserPassword == password).FirstOrDefault();
+                if(tea==null)
+                {
+                    ViewBag.message = "Login fail";
+                    return View("Login");
+                }
+               else
+                {
+                    Session["username"] = tea.UserName.ToString();
+                    return RedirectToAction("Index", "Home");
+                }
+
+        
+
             }
             else
             {
-        
-                return RedirectToAction("Index","Home");
+           
+
+                Session["username"] = Login.StudentId.ToString(); 
+              
+                return RedirectToAction("Student", "Home");
+            }  
+            
+       
+        }
+
+        public ActionResult Trangection(int? id) 
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var StudentBilId = db.StudentBills.Find(id);
+            if (StudentBilId == null)
+            {
+                return HttpNotFound();
             }
 
-       
+            return View(StudentBilId);
+        }
+
+        [HttpPost]
+        public ActionResult Trangection(StudentBill stbill)
+        {
+            Transcetion trns = new Transcetion();
+            trns.TransectionnDate = DateTime.Now;
+            trns.StudentBillId = stbill.StudentBilId;
+
+                db.Transcetions.Add(trns);
+                db.SaveChanges();
+                return RedirectToAction("Student_Bill");
+            
+            
+        }
+
+        public ActionResult Tranjection_Info()
+        {
+            return View(db.Transcetions.ToList());
+        }
+
+        public ActionResult Student()  
+        {
+            if (Session["username"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            };
+        }
+
+        public ActionResult Student_Info()
+        {
+            int sess = Convert.ToInt32(Session["username"]);
+            return View(db.Students.Where(x => x.StudentId == sess).ToList());
+        }
+
+        public ActionResult TeacherLogOut()  
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Home");
+        }
+
+        public ActionResult Student_Schedule()
+        {
+            int sess = Convert.ToInt32(Session["username"]);
+            int classId = db.StudentClasses.FirstOrDefault(x => x.StudentId == sess).ClassId;
+            int schedule = db.Schedules.FirstOrDefault(x => x.ClassId == classId).ScheduleId;
+
+
+
+            return View(db.Schedules.Where(x => x.ScheduleId == schedule).ToList());
         }
     }
 }
